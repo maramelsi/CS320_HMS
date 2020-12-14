@@ -4,16 +4,14 @@ import java.util.Scanner;
 import java.time.*;
 public class Doctor {
     static int doctor_id;
-    static String name;
+    static String fname;
+    static String lname;
     double height;
     double weight;
-    int age;
-    static String department;
-    static String speciality;
+    static String field;
     static String blood_type;
-    String[] patient_list;
 
-    static String doctor_username = "root";
+    static String user = "root";
     static String password = "1234";
     static String url = "jdbc:mysql://localhost:3306/cs320?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     static Connection myConn;
@@ -170,28 +168,21 @@ public class Doctor {
         while (resultSet.next()) {
             System.out.print(resultSet.getInt("doctor_id"));
             System.out.print("  ");
-            System.out.print(resultSet.getString("patient_fname"));
+            System.out.print(resultSet.getString("doctor_fname"));
             System.out.print("  ");
-            System.out.print(resultSet.getString("patient_lname"));
+            System.out.print(resultSet.getString("doctor_lname"));
             System.out.print("  ");
-            System.out.print(resultSet.getString("blood_type"));
+            System.out.print(resultSet.getString("d_field"));
             System.out.print("  ");
-            System.out.print(resultSet.getString("p_weight"));
+            System.out.print(resultSet.getString("d_bloodtype"));
             System.out.print("    ");
-            System.out.print(resultSet.getString("p_height"));
+            System.out.print(resultSet.getString("d_weight"));
             System.out.print("  ");
-            System.out.print(resultSet.getString("disease_hist"));
-            System.out.print("  ");
-            System.out.print(resultSet.getString("medicine_hist"));
-            System.out.print("  ");
-            System.out.print(resultSet.getString("diet_plan"));
-            System.out.print("  ");
-            System.out.print(resultSet.getString("exercise_plan"));
-            System.out.println("  ");
+            System.out.print(resultSet.getString("d_height"));
     }
-    public static void view_patient_list() throws SQLException{
+    /*public static void view_patient_list() throws SQLException{
 
-    }
+    }*/
     public static void open_reservation_system() throws SQLException{
 
     }
