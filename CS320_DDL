@@ -1,0 +1,32 @@
+CREATE TABLE `cs320`.`patient` (
+  `patient_id` INT NOT NULL AUTO_INCREMENT,
+  `patient_fname` VARCHAR(45) NOT NULL,
+  `patient_lname` VARCHAR(45) NOT NULL,
+  `blood_type` VARCHAR(45) NOT NULL,
+  `p_weight` VARCHAR(45) NOT NULL,
+  `p_height` VARCHAR(45) NOT NULL,
+  `disease_hist` VARCHAR(150) NULL,
+  `medicine_hist` VARCHAR(45) NULL,
+  `diet_plan` VARCHAR(45) NULL,
+  `exercise_plan` VARCHAR(45) NULL,
+  PRIMARY KEY (`patient_id`));
+
+
+CREATE TABLE `cs320`.`doctor` (
+  `doctor_id` INT NOT NULL AUTO_INCREMENT,
+  `doctor_fname` VARCHAR(45) NOT NULL,
+  `doctor_lname` VARCHAR(45) NOT NULL,
+  `d_field` VARCHAR(45) NOT NULL,
+  `d_bloodtype` VARCHAR(45) NOT NULL,
+  `d_weight` VARCHAR(45) NOT NULL,
+  `d_height` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`doctor_id`));
+
+
+CREATE TABLE `cs320`.`hospital` (
+  `appointment_no` INT NOT NULL AUTO_INCREMENT,
+  `doctor_id` VARCHAR(45) NOT NULL,
+  `patient_id` VARCHAR(45) NOT NULL,
+  `polyclinic` VARCHAR(45) NOT NULL,
+  `appointment_date` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`appointment_no`));
