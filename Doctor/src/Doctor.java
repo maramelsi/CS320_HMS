@@ -179,15 +179,76 @@ public class Doctor {
             System.out.print(resultSet.getString("d_weight"));
             System.out.print("  ");
             System.out.print(resultSet.getString("d_height"));
+        }
     }
-    /*public static void view_patient_list() throws SQLException{
 
-    }*/
-    public static void open_reservation_system() throws SQLException{
-
+    public static void view_all_appointments() throws SQLException{
+        int id=login();
+        PreparedStatement statement;
+        String action = "select * from `cs320`.`appointment` where `doctor_id`= ? ";
+        statement = myConn.prepareStatement(action);
+        statement.setInt(1, id);
+        resultSet = statement.executeQuery();
+        while (resultSet.next()) {
+            System.out.print(resultSet.getInt("appointment_no"));
+            System.out.print("  ");
+            System.out.print(resultSet.getTimestamp("ap_datetime"));
+            System.out.print("  ");
+            System.out.print(resultSet.getInt("patient_id"));
+            System.out.print("  ");
+            System.out.print(resultSet.getInt("doctor_id"));
+            System.out.print("  ");
+        }
     }
-    public static void edit_patient_data() throws SQLException{
-
+    public static void add_diagnosis() throws SQLException{
+        int doctor_id=login();
+        int diagnosis_id = 1;
+        System.out.println("Enter the patient ID: ");
+        int patient_id = scan.nextInt();
+        System.out.println("Enter diagnosis: ");
+        String diagnosis = scan.next();
+        System.out.println("Enter the prescription: ");
+        String medicine = scan.next();
+        PreparedStatement statement1 = null;
+        String action = "insert into `cs320`.`diagnosis` (`diagnosis_id`, `diagnosis`, `medicine`, `patient_id`, `doctor_id`) values (?,?,?,?,?)";
+        statement1 = myConn.prepareStatement(action);
+        statement1.setInt(5, doctor_id);
+        statement1.setInt(4, patient_id);
+        statement1.setInt(1, diagnosis_id);
+        statement1.setString(2,diagnosis);
+        statement1.setString(3, medicine);
+    }
+    public static void add_meal_plan() throws SQLException{
+        int meal_plan_id = 1;
+        System.out.println("Enter the patient ID: ");
+        int patient_id = scan.nextInt();
+        System.out.println("Enter Breakfast plan: ");
+        String breakfast = scan.next();
+        System.out.println("Enter the lunch plan: ");
+        String lunch = scan.next();
+        System.out.println("Enter the Dinner plan: ");
+        String dinner = scan.next();
+        PreparedStatement statement1 = null;
+        String action = "insert into `cs320`.`meal_plan` (`meal_plan_id`, `breakfast`, `lunch`, `dinner`, `patient_id`) values (?,?,?,?,?)";
+        statement1 = myConn.prepareStatement(action);
+        statement1.setInt(1,meal_plan_id);
+        statement1.setString(2, breakfast);
+        statement1.setString(3, lunch);
+        statement1.setString(4, dinner);
+        statement1.setInt(5, patient_id);
+    }
+    public static void add_exercise_plan() throws SQLException{
+        int exercise_plan_id = 1;
+        System.out.println("Enter the patient ID: ");
+        int patient_id = scan.nextInt();
+        System.out.println("Enter exercise plan: ");
+        String plan = scan.next();
+        PreparedStatement statement1 = null;
+        String action = "insert into `cs320`.`exercise_plan` (`exercise_plan_id`, `plan`, `patient_id`) values (?, ?, ?)";
+        statement1 = myConn.prepareStatement(action);
+        statement1.setInt(1, exercise_plan_id);
+        statement1.setString(2, plan);
+        statement1.setInt(3, patient_id);
     }
 
     }
