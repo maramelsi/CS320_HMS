@@ -47,7 +47,7 @@ public class Doctor {
     static String password9="32145";
     static String password10="45123";
 
-
+    //A function that views the doctor information given their id
     public static void view_doctor_profile() throws SQLException{
         int id=login();
         PreparedStatement statement;
@@ -71,7 +71,7 @@ public class Doctor {
             System.out.print(resultSet.getString("d_height"));
         }
     }
-
+    //A function that views all past and upcoming appointments given a doctor id
     public static void view_all_appointments() throws SQLException{
         int id=login();
         PreparedStatement statement;
@@ -90,6 +90,7 @@ public class Doctor {
             System.out.print("  ");
         }
     }
+    //A function that lets doctors add their starting and ending available dates and times to the availability table in the database
     public static void available_times() throws SQLException{
        int id = login();
 
@@ -110,6 +111,7 @@ public class Doctor {
        statement1.executeUpdate();
 
     }
+    //A function that lets the doctors add diagnosis information for their patients
     public static void add_diagnosis() throws SQLException{
         int doctor_id=login();
         int diagnosis_id = 1;
@@ -129,6 +131,7 @@ public class Doctor {
         statement1.setString(3, medicine);
         statement1.executeUpdate();
     }
+    //A functions that lets the doctors add a meal plan for their patients
     public static void add_meal_plan() throws SQLException{
         int meal_plan_id = 1;
         System.out.println("Enter the patient ID: ");
@@ -149,6 +152,7 @@ public class Doctor {
         statement1.setInt(5, patient_id);
         statement1.executeUpdate();
     }
+    //A function that lets the doctors add an exercise plan for their patients
     public static void add_exercise_plan() throws SQLException{
         int exercise_plan_id = 1;
         System.out.println("Enter the patient ID: ");
@@ -163,6 +167,7 @@ public class Doctor {
         statement1.setInt(3, patient_id);
         statement1.executeUpdate();
     }
+    //The system login function for doctors
     public static int login() {
         System.out.println("Please enter your doctor id: ");
         int id = scan.nextInt();
