@@ -6,18 +6,11 @@ import java.util.Scanner;
 import java.time.*;
 public class Doctor {
     static int doctor_id;
-    static String fname;
-    static String lname;
-    double height;
-    double weight;
-    static String field;
-    static String blood_type;
-
     static String user = "root";
     static String password = "1234";
     static String url = "jdbc:mysql://localhost:3306/cs320?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     static Connection myConn;
-    static Scanner scan=new Scanner(System.in);
+    static Scanner scan = new Scanner(System.in);
     static {
         try {
             myConn = DriverManager.getConnection(url, user, password);
