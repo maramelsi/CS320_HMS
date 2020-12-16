@@ -16,3 +16,12 @@ INSERT INTO `cs320`.`doctor` (`doctor_id`, `doctor_fname`, `doctor_lname`, `d_fi
 INSERT INTO `cs320`.`doctor` (`doctor_id`, `doctor_fname`, `doctor_lname`, `d_field`, `d_bloodtype`, `d_weight`, `d_height`) VALUES ('2', 'Ayberk', 'ORHON', 'general surgeon', 'ARh+', '85kg', '185cm');
 INSERT INTO `cs320`.`doctor` (`doctor_id`, `doctor_fname`, `doctor_lname`, `d_field`, `d_bloodtype`, `d_weight`, `d_height`) VALUES ('3', 'Maram', 'ELSEBAKHİ', 'ophthalmologist', 'ARh+', '60kg', '175cm');
 INSERT INTO `cs320`.`doctor` (`doctor_id`, `doctor_fname`, `doctor_lname`, `d_field`, `d_bloodtype`, `d_weight`, `d_height`) VALUES ('4', 'Erhan', 'Çekin', 'general practitioner', 'ARh+', '80kg', '180cm');
+
+
+#Maram-Patient
+#Patient create appointment
+#insert into Appointment values(
+#patient_id,( select `doctor_id` from `cs320`.`doctor` where doctorname(`doctor_name`)),`ap_from`, `ap_to`) ;
+
+#Patient cancel appointment if there is more than 1 day left
+#delete from `cs320`.`appointment` where `patient_id`=`` and `ap_from` > date_add(now(), INTERVAL 1 day);

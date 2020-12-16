@@ -30,3 +30,51 @@ CREATE TABLE `cs320`.`hospital` (
   `polyclinic` VARCHAR(45) NOT NULL,
   `appointment_date` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`appointment_no`));
+  
+CREATE TABLE `cs320`.`appointment` (
+int `appointment_no` NOT NULL AUTO_INCREMENT,
+datetime `ap_datetime`,
+int `patient_id` NOT NULL,
+int `doctor_id` NOT NULL,
+primary key (`ap_datetime`, `patient_id`),
+foreign key `patient_id` references `cs320`.`patient`,
+foreign key `doctor_id` references `cs320`.`doctor`
+);
+
+create table `cs320`.`availability`
+(
+int `doctor_id`,
+datetime `av_from`,
+datetime `av_to`,
+primary key(`doctor_id`, `av_from`),
+foreign key `doctor_id` references `cs320`.`doctor`
+);
+
+CREATE TABLE `cs320`.`diagnosis`
+(
+varchar(5) `diagnosis_id` NOT NULL AUTO_INCREMENT,
+varchar(15) `disease`,
+varchar(15) `medicine`,
+int `patient_id`,
+int `doctor_id` NOT NULL,
+foreign key `doctor_id` references `cs320`.`doctor`,
+primary key (`diagnosis_id`),
+foreign key `patient_id` references `cs320`.`patient`
+);
+
+CREATE TABLE `cs320`.`meal_plan`(
+varchar(5) `meal_plan_id` NOT NULL AUTO_INCREMENT,
+varchar(500) `breakfast`,
+varchar(500) `lunch`,
+varchar(500) `dinner`,
+int `patient_id`,
+foreign key `patient_id` references `cs320`.`patient`
+);
+
+CREATE TABLE `cs320`.`exercise_plan`(
+varchar(5) `exercise_plan_id` NOT NULL AUTO_INCREMENT,
+varchar(500) `plan`,
+int `patient_id`,
+foreign key `patient_id` references `cs320`.`patient`
+);
+
