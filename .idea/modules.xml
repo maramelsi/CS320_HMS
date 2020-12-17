@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/CS320_HMS.iml" filepath="$PROJECT_DIR$/.idea/CS320_HMS.iml" />
       <module fileurl="file://$PROJECT_DIR$/Doctor/Doctor.iml" filepath="$PROJECT_DIR$/Doctor/Doctor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Patient/Patient.iml" filepath="$PROJECT_DIR$/Patient/Patient.iml" />
     </modules>
   </component>
 </project>
