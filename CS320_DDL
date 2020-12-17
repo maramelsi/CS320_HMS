@@ -1,7 +1,6 @@
 CREATE TABLE `cs320`.`patient` (
   `patient_id` INT NOT NULL AUTO_INCREMENT,
-  `patient_fname` VARCHAR(45) NOT NULL,
-  `patient_lname` VARCHAR(45) NOT NULL,
+  `patient_name` VARCHAR(45) NOT NULL,
   `blood_type` VARCHAR(45) NOT NULL,
   `p_weight` VARCHAR(45) NOT NULL,
   `p_height` VARCHAR(45) NOT NULL,
@@ -14,8 +13,7 @@ CREATE TABLE `cs320`.`patient` (
 
 CREATE TABLE `cs320`.`doctor` (
   `doctor_id` INT NOT NULL AUTO_INCREMENT,
-  `doctor_fname` VARCHAR(45) NOT NULL,
-  `doctor_lname` VARCHAR(45) NOT NULL,
+  `doctor_name` VARCHAR(45) NOT NULL,
   `d_field` VARCHAR(45) NOT NULL,
   `d_bloodtype` VARCHAR(45) NOT NULL,
   `d_weight` VARCHAR(45) NOT NULL,
