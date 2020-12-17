@@ -51,9 +51,7 @@ public class Doctor {
         while (resultSet.next()) {
             System.out.print(resultSet.getInt("doctor_id"));
             System.out.print("  ");
-            System.out.print(resultSet.getString("doctor_fname"));
-            System.out.print("  ");
-            System.out.print(resultSet.getString("doctor_lname"));
+            System.out.print(resultSet.getString("doctor_name"));
             System.out.print("  ");
             System.out.print(resultSet.getString("d_field"));
             System.out.print("  ");
@@ -68,7 +66,7 @@ public class Doctor {
     public static void view_all_appointments() throws SQLException{
         int id=login();
         PreparedStatement statement;
-        String action = "select * from `cs320`.`appointment` where `doctor_id`= ? ";
+        String action = "select * from 'cs320'.'appointment' where 'doctor_id'= ? ";
         statement = myConn.prepareStatement(action);
         statement.setInt(1, id);
         resultSet = statement.executeQuery();
@@ -96,7 +94,7 @@ public class Doctor {
        Timestamp timestamp1 = Timestamp.valueOf(timestampAsString1);
        Timestamp timestamp2 = Timestamp.valueOf(timestampAsString2);
 
-       String action = "insert into `cs320`.`availability`(doctor_id, av_from, av_to) values (?, ?, ?)";
+       String action = "insert into 'cs320'.'availability'(doctor_id, av_from, av_to) values (?, ?, ?)";
        PreparedStatement statement1 = myConn.prepareStatement(action);
        statement1.setInt(1, id);
        statement1.setTimestamp(2, timestamp1);
@@ -115,13 +113,12 @@ public class Doctor {
         System.out.println("Enter the prescription: ");
         String medicine = scan.next();
         PreparedStatement statement1 = null;
-        String action = "insert into `cs320`.`diagnosis` (`diagnosis_id`, `diagnosis`, `medicine`, `patient_id`, `doctor_id`) values (?,?,?,?,?)";
+        String action = "insert into 'cs320'.'diagnosis' ('diagnosis', 'medicine', 'patient_id', 'doctor_id') values (?,?,?,?)";
         statement1 = myConn.prepareStatement(action);
-        statement1.setInt(5, doctor_id);
-        statement1.setInt(4, patient_id);
-        statement1.setInt(1, diagnosis_id);
-        statement1.setString(2,diagnosis);
-        statement1.setString(3, medicine);
+        statement1.setString(1,diagnosis);
+        statement1.setString(2, medicine);
+        statement1.setInt(3, patient_id);
+        statement1.setInt(4, doctor_id);
         statement1.executeUpdate();
     }
     //A functions that lets the doctors add a meal plan for their patients
@@ -129,20 +126,19 @@ public class Doctor {
         int meal_plan_id = 1;
         System.out.println("Enter the patient ID: ");
         int patient_id = scan.nextInt();
-        System.out.println("Enter Breakfast plan: ");
+        System.out.println("Enter breakfast plan: ");
         String breakfast = scan.next();
-        System.out.println("Enter the lunch plan: ");
+        System.out.println("Enter lunch plan: ");
         String lunch = scan.next();
-        System.out.println("Enter the Dinner plan: ");
+        System.out.println("Enter dinner plan: ");
         String dinner = scan.next();
         PreparedStatement statement1 = null;
-        String action = "insert into `cs320`.`meal_plan` (`meal_plan_id`, `breakfast`, `lunch`, `dinner`, `patient_id`) values (?,?,?,?,?)";
+        String action = "insert into 'cs320'.'meal_plan' ('breakfast', 'lunch', 'dinner', 'patient_id') values (?,?,?,?)";
         statement1 = myConn.prepareStatement(action);
-        statement1.setInt(1,meal_plan_id);
-        statement1.setString(2, breakfast);
-        statement1.setString(3, lunch);
-        statement1.setString(4, dinner);
-        statement1.setInt(5, patient_id);
+        statement1.setString(1, breakfast);
+        statement1.setString(2, lunch);
+        statement1.setString(3, dinner);
+        statement1.setInt(4, patient_id);
         statement1.executeUpdate();
     }
     //A function that lets the doctors add an exercise plan for their patients
@@ -153,11 +149,10 @@ public class Doctor {
         System.out.println("Enter exercise plan: ");
         String plan = scan.next();
         PreparedStatement statement1 = null;
-        String action = "insert into `cs320`.`exercise_plan` (`exercise_plan_id`, `plan`, `patient_id`) values (?, ?, ?)";
+        String action = "insert into 'cs320'.'exercise_plan' ('plan', 'patient_id') values (?, ?)";
         statement1 = myConn.prepareStatement(action);
-        statement1.setInt(1, exercise_plan_id);
-        statement1.setString(2, plan);
-        statement1.setInt(3, patient_id);
+        statement1.setString(1, plan);
+        statement1.setInt(2, patient_id);
         statement1.executeUpdate();
     }
     //The system login function for doctors
