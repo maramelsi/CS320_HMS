@@ -79,6 +79,8 @@ public class Doctor {
             System.out.print("  ");
             System.out.print(resultSet.getInt("doctor_id"));
             System.out.print("  ");
+            System.out.print(resultSet.getString("polyclinic"));
+            System.out.print("  ");
         }
     }
     //A function that lets doctors add their starting and ending available dates and times to the availability table in the database
