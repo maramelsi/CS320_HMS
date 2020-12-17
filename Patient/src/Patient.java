@@ -47,9 +47,7 @@ public class Patient {
         while (resultSet.next()) {
             System.out.print(resultSet.getInt("doctor_id"));
             System.out.print("  ");
-            System.out.print(resultSet.getString("doctor_fname"));
-            System.out.print("  ");
-            System.out.print(resultSet.getString("doctor_lname"));
+            System.out.print(resultSet.getString("doctor_name"));
             System.out.print("  ");
             System.out.print(resultSet.getString("d_field"));
             System.out.println("  ");
@@ -111,10 +109,8 @@ public class Patient {
                 while (resultSet.next()) {
                     System.out.print(resultSet.getInt("patient_id"));
                     System.out.print("  ");
-                    System.out.print(resultSet.getString("patient_fname"));
-                    System.out.print("  ");
-                    System.out.print(resultSet.getString("patient_lname"));
-                    System.out.print("  ");
+                    System.out.print(resultSet.getString("patient_name"));
+                    System.out.print("  ");                   
                     System.out.print(resultSet.getString("blood_type"));
                     System.out.print("  ");
                     System.out.print(resultSet.getString("p_weight"));
