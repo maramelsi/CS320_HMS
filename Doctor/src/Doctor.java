@@ -29,16 +29,11 @@ public class Doctor {
             exception.printStackTrace();
         }
     }
-    static String password1="12345";
-    static String password2="11223";
-    static String password3="22113";
-    static String password4="33112";
-    static String password5="33221";
-    static String password6="12312";
-    static String password7="21321";
-    static String password8="54321";
-    static String password9="32145";
-    static String password10="45123";
+    static String doc_password1="abcd";
+    static String doc_password2="dcba";
+    static String doc_password3="bacd";
+    static String doc_password4="cdba";
+    
 
     //A function that views the doctor information given their id
     public static void view_doctor_profile() throws SQLException{
@@ -66,7 +61,7 @@ public class Doctor {
     public static void view_all_appointments() throws SQLException{
         int id=login();
         PreparedStatement statement;
-        String action = "select * from 'cs320'.'appointment' where 'doctor_id'= ? ";
+        String action = "select * from cs320.appointment where doctor_id= ? ";
         statement = myConn.prepareStatement(action);
         statement.setInt(1, id);
         resultSet = statement.executeQuery();
@@ -95,7 +90,7 @@ public class Doctor {
        Timestamp timestamp1 = Timestamp.valueOf(timestampAsString1);
        Timestamp timestamp2 = Timestamp.valueOf(timestampAsString2);
 
-       String action = "insert into 'cs320'.'availability'(doctor_id, av_from, av_to) values (?, ?, ?)";
+       String action = "insert into cs320.availability(doctor_id, av_from, av_to) values (?, ?, ?)";
        PreparedStatement statement1 = myConn.prepareStatement(action);
        statement1.setInt(1, id);
        statement1.setTimestamp(2, timestamp1);
@@ -114,7 +109,7 @@ public class Doctor {
         System.out.println("Enter the prescription: ");
         String medicine = scan.next();
         PreparedStatement statement1 = null;
-        String action = "insert into 'cs320'.'diagnosis' ('diagnosis', 'medicine', 'patient_id', 'doctor_id') values (?,?,?,?)";
+        String action = "insert into cs320.diagnosis ('diagnosis', 'medicine', 'patient_id', 'doctor_id') values (?,?,?,?)";
         statement1 = myConn.prepareStatement(action);
         statement1.setString(1,diagnosis);
         statement1.setString(2, medicine);
@@ -134,7 +129,7 @@ public class Doctor {
         System.out.println("Enter dinner plan: ");
         String dinner = scan.next();
         PreparedStatement statement1 = null;
-        String action = "insert into 'cs320'.'meal_plan' ('breakfast', 'lunch', 'dinner', 'patient_id') values (?,?,?,?)";
+        String action = "insert into cs320.meal_plan ('breakfast', 'lunch', 'dinner', 'patient_id') values (?,?,?,?)";
         statement1 = myConn.prepareStatement(action);
         statement1.setString(1, breakfast);
         statement1.setString(2, lunch);
@@ -150,7 +145,7 @@ public class Doctor {
         System.out.println("Enter exercise plan: ");
         String plan = scan.next();
         PreparedStatement statement1 = null;
-        String action = "insert into 'cs320'.'exercise_plan' ('plan', 'patient_id') values (?, ?)";
+        String action = "insert into cs320.exercise_plan ('plan', 'patient_id') values (?, ?)";
         statement1 = myConn.prepareStatement(action);
         statement1.setString(1, plan);
         statement1.setInt(2, patient_id);
@@ -163,7 +158,7 @@ public class Doctor {
         if (id == 1) {
             System.out.println("Please enter your password: ");
             String pass = scan.nextLine();
-            if (pass.equals(password1)) {
+            if (pass.equals(doc_password1)) {
                 doctor_id=1;
             }
             else{
@@ -173,7 +168,7 @@ public class Doctor {
         else if (id == 2) {
             System.out.println("Please enter your password: ");
             String pass = scan.nextLine();
-            if (pass.equals(password2)) {
+            if (pass.equals(doc_password2)) {
                 doctor_id=2;
             }
             else{
@@ -183,7 +178,7 @@ public class Doctor {
         else if (id == 3) {
             System.out.println("Please enter your password: ");
             String pass = scan.nextLine();
-            if (pass.equals(password3)) {
+            if (pass.equals(doc_password3)) {
                 doctor_id=3;
             }
             else{
@@ -193,73 +188,14 @@ public class Doctor {
         else if (id == 4) {
             System.out.println("Please enter your password: ");
             String pass = scan.nextLine();
-            if (pass.equals(password4)) {
+            if (pass.equals(doc_password4)) {
                 doctor_id=4;
             }
             else{
                 System.out.println("Invalid password!");
             }
         }
-        else if (id == 5) {
-            System.out.println("Please enter your password: ");
-            String pass = scan.nextLine();
-            if (pass.equals(password5)) {
-                doctor_id=5;
-            }
-            else{
-                System.out.println("Invalid password!");
-            }
-        }
-        else if (id == 6) {
-            System.out.println("Please enter your password: ");
-            String pass = scan.nextLine();
-            if (pass.equals(password6)) {
-                doctor_id=6;
-            }
-            else{
-                System.out.println("Invalid password!");
-            }
-        }
-        else if (id == 7) {
-            System.out.println("Please enter your password: ");
-            String pass = scan.nextLine();
-            if (pass.equals(password7)) {
-                doctor_id=7;
-            }
-            else{
-                System.out.println("Invalid password!");
-            }
-        }
-        else if (id == 8) {
-            System.out.println("Please enter your password: ");
-            String pass = scan.nextLine();
-            if (pass.equals(password8)) {
-                doctor_id=8;
-            }
-            else{
-                System.out.println("Invalid password!");
-            }
-        }
-        else if (id == 9) {
-            System.out.println("Please enter your password: ");
-            String pass = scan.nextLine();
-            if (pass.equals(password9)) {
-                doctor_id=9;
-            }
-            else{
-                System.out.println("Invalid password!");
-            }
-        }
-        else if (id == 10) {
-            System.out.println("Please enter your password: ");
-            String pass = scan.nextLine();
-            if (pass.equals(password10)) {
-                doctor_id=10;
-            }
-            else{
-                System.out.println("Invalid password!");
-            }
-        }
+        
         else {
             System.out.println("Invalid user id!");
         }
