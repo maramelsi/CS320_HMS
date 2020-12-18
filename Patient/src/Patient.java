@@ -2,7 +2,7 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.util.Scanner;
 import java.time.*;
-public class patient {
+public class Patient {
 
     static String user = "root";
     static String password = "1234";

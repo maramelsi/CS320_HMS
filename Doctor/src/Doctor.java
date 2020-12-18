@@ -105,7 +105,7 @@ public class Doctor {
         String medicine = scan.next();
         String action = "insert into cs320.diagnosis ('diagnosis', 'medicine', 'patient_id', 'doctor_id') values (?,?,?,?)";
         PreparedStatement statement1 = myConn.prepareStatement(action);
-        statement1.setString(1,diagnosis);
+        statement1.setString(1, diagnosis);
         statement1.setString(2, medicine);
         statement1.setInt(3, patient_id);
         statement1.setInt(4, doctor_id);
