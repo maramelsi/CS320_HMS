@@ -1,9 +1,5 @@
 import java.sql.*;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.Scanner;
-import java.time.*;
 public class Doctor {
     static int doctor_id;
     static String user = "root";
@@ -51,7 +47,7 @@ public class Doctor {
             System.out.print(resultSet.getString("d_field"));
             System.out.print("  ");
             System.out.print(resultSet.getString("d_bloodtype"));
-            System.out.print("    ");
+            System.out.print("  ");
             System.out.print(resultSet.getString("d_weight"));
             System.out.print("  ");
             System.out.print(resultSet.getString("d_height"));
@@ -101,16 +97,14 @@ public class Doctor {
     //A function that lets the doctors add diagnosis information for their patients
     public static void add_diagnosis() throws SQLException{
         int doctor_id=login();
-        int diagnosis_id = 1;
         System.out.println("Enter the patient ID: ");
         int patient_id = scan.nextInt();
         System.out.println("Enter diagnosis: ");
         String diagnosis = scan.next();
         System.out.println("Enter the prescription: ");
         String medicine = scan.next();
-        PreparedStatement statement1 = null;
         String action = "insert into cs320.diagnosis ('diagnosis', 'medicine', 'patient_id', 'doctor_id') values (?,?,?,?)";
-        statement1 = myConn.prepareStatement(action);
+        PreparedStatement statement1 = myConn.prepareStatement(action);
         statement1.setString(1,diagnosis);
         statement1.setString(2, medicine);
         statement1.setInt(3, patient_id);
@@ -119,7 +113,6 @@ public class Doctor {
     }
     //A functions that lets the doctors add a meal plan for their patients
     public static void add_meal_plan() throws SQLException{
-        int meal_plan_id = 1;
         System.out.println("Enter the patient ID: ");
         int patient_id = scan.nextInt();
         System.out.println("Enter breakfast plan: ");
@@ -128,9 +121,8 @@ public class Doctor {
         String lunch = scan.next();
         System.out.println("Enter dinner plan: ");
         String dinner = scan.next();
-        PreparedStatement statement1 = null;
         String action = "insert into cs320.meal_plan ('breakfast', 'lunch', 'dinner', 'patient_id') values (?,?,?,?)";
-        statement1 = myConn.prepareStatement(action);
+        PreparedStatement statement1 = myConn.prepareStatement(action);
         statement1.setString(1, breakfast);
         statement1.setString(2, lunch);
         statement1.setString(3, dinner);
@@ -139,14 +131,12 @@ public class Doctor {
     }
     //A function that lets the doctors add an exercise plan for their patients
     public static void add_exercise_plan() throws SQLException{
-        int exercise_plan_id = 1;
         System.out.println("Enter the patient ID: ");
         int patient_id = scan.nextInt();
         System.out.println("Enter exercise plan: ");
         String plan = scan.next();
-        PreparedStatement statement1 = null;
         String action = "insert into cs320.exercise_plan ('plan', 'patient_id') values (?, ?)";
-        statement1 = myConn.prepareStatement(action);
+        PreparedStatement statement1 = myConn.prepareStatement(action);
         statement1.setString(1, plan);
         statement1.setInt(2, patient_id);
         statement1.executeUpdate();
