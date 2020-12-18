@@ -2,7 +2,7 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.util.Scanner;
 import java.time.*;
-public class Patient {
+public class patient {
 
     static String user = "root";
     static String password = "1234";
@@ -56,189 +56,192 @@ public class Patient {
         System.out.println("Enter the doctor id of the doctor you want to make an appointment from: ");
         int doctor_id=scan.nextInt();
         if (doctor_id==1){
-            String action1 = "INSERT INTO cs320.hospital(doctor_id,patient_id,polyclinic,appointment_date) VALUES(?,?,?,?)";
+            String action1 = "INSERT INTO cs320.appointment(appointment_date,patient_id,doctor_id,polyclinic) VALUES(?,?,?,?)";
             statement1 = myConn.prepareStatement(action);
-            statement1.setInt(1, doctor_id);
+            statement1.setString(1, String.valueOf(LocalDate.now()));
             statement1.setInt(2, patient_id);
-            statement1.setString(3,"cardiology" );
-            statement1.setString(4, String.valueOf(LocalDate.now()));
+            statement1.setInt(3, doctor_id);
+            statement1.setString(4,"cardiology" );
             statement1.executeUpdate();
             System.out.println("New appointment!");
         }
         else if (doctor_id==2){
-            String action1 = "INSERT INTO cs320.hospital(doctor_id,patient_id,polyclinic,appointment_date) VALUES(?,?,?,?)";
+            String action1 = "INSERT INTO cs320.appointment(appointment_date,patient_id,doctor_id,polyclinic) VALUES(?,?,?,?)";
             statement1 = myConn.prepareStatement(action);
-            statement1.setInt(1, doctor_id);
+            statement1.setString(1, String.valueOf(LocalDate.now()));
             statement1.setInt(2, patient_id);
+            statement1.setInt(3, doctor_id);
             statement1.setString(3,"general surgery" );
             statement1.setString(4, String.valueOf(LocalDate.now()));
             statement1.executeUpdate();
             System.out.println("New appointment!");
         }
         else if (doctor_id==3){
-            String action1 = "INSERT INTO cs320.hospital(doctor_id,patient_id,polyclinic,appointment_date) VALUES(?,?,?,?)";
+            String action1 = "INSERT INTO cs320.appointment(appointment_date,patient_id,doctor_id,polyclinic) VALUES(?,?,?,?)";
             statement1 = myConn.prepareStatement(action);
-            statement1.setInt(1, doctor_id);
+            statement1.setString(1, String.valueOf(LocalDate.now()));
             statement1.setInt(2, patient_id);
+            statement1.setInt(3, doctor_id);
             statement1.setString(3,"ophthalmology" );
             statement1.setString(4, String.valueOf(LocalDate.now()));
             statement1.executeUpdate();
             System.out.println("New appointment!");
         }
         else if (doctor_id==4){
-            String action1 = "INSERT INTO cs320.hospital(doctor_id,patient_id,polyclinic,appointment_date) VALUES(?,?,?,?)";
+            String action1 = "INSERT INTO cs320.appointment(appointment_date,patient_id,doctor_id,polyclinic) VALUES(?,?,?,?)";
             statement1 = myConn.prepareStatement(action);
-            statement1.setInt(1, doctor_id);
+            statement1.setString(1, String.valueOf(LocalDate.now()));
             statement1.setInt(2, patient_id);
+            statement1.setInt(3, doctor_id);
             statement1.setString(3,"general practitionery" );
             statement1.setString(4, String.valueOf(LocalDate.now()));
             statement1.executeUpdate();
             System.out.println("New appointment!");
         }
-    else{
+        else{
             System.out.println("Invalid doctor id!");
         }
     }
     public static void display_profile() throws SQLException {
-                int id=login();
-                PreparedStatement statement;
-                String action = "SELECT * FROM cs320.patient WHERE user_id= ? ";
-                statement = myConn.prepareStatement(action);
-                statement.setInt(1, id);
-                resultSet = statement.executeQuery();
-                while (resultSet.next()) {
-                    System.out.print(resultSet.getInt("patient_id"));
-                    System.out.print("  ");
-                    System.out.print(resultSet.getString("patient_name"));
-                    System.out.print("  ");                   
-                    System.out.print(resultSet.getString("blood_type"));
-                    System.out.print("  ");
-                    System.out.print(resultSet.getString("p_weight"));
-                    System.out.print("    ");
-                    System.out.print(resultSet.getString("p_height"));
-                    System.out.print("  ");
-                    System.out.print(resultSet.getString("disease_hist"));
-                    System.out.print("  ");
-                    System.out.print(resultSet.getString("medicine_hist"));
-                    System.out.print("  ");
-                    System.out.print(resultSet.getString("diet_plan"));
-                    System.out.print("  ");
-                    System.out.print(resultSet.getString("exercise_plan"));
-                    System.out.println("  ");
+        int id=login();
+        PreparedStatement statement;
+        String action = "SELECT * FROM cs320.patient WHERE user_id= ? ";
+        statement = myConn.prepareStatement(action);
+        statement.setInt(1, id);
+        resultSet = statement.executeQuery();
+        while (resultSet.next()) {
+            System.out.print(resultSet.getInt("patient_id"));
+            System.out.print("  ");
+            System.out.print(resultSet.getString("patient_name"));
+            System.out.print("  ");
+            System.out.print(resultSet.getString("blood_type"));
+            System.out.print("  ");
+            System.out.print(resultSet.getString("p_weight"));
+            System.out.print("    ");
+            System.out.print(resultSet.getString("p_height"));
+            System.out.print("  ");
+            System.out.print(resultSet.getString("disease_hist"));
+            System.out.print("  ");
+            System.out.print(resultSet.getString("medicine_hist"));
+            System.out.print("  ");
+            System.out.print(resultSet.getString("diet_plan"));
+            System.out.print("  ");
+            System.out.print(resultSet.getString("exercise_plan"));
+            System.out.println("  ");
 
-                }
+        }
+    }
+
+    public static int login() {
+        System.out.println("Please enter your patient id: ");
+        int id = scan.nextInt();
+        if (id == 1) {
+            System.out.println("Please enter your password: ");
+            String pass = scan.nextLine();
+            if (pass.equals(password1)) {
+                user_id=1;
             }
-
-            public static int login() {
-                System.out.println("Please enter your patient id: ");
-                int id = scan.nextInt();
-                if (id == 1) {
-                    System.out.println("Please enter your password: ");
-                    String pass = scan.nextLine();
-                    if (pass.equals(password1)) {
-                        user_id=1;
-                    }
-                    else{
-                        System.out.println("Invalid password!");
-                    }
-                }
-                else if (id == 2) {
-                    System.out.println("Please enter your password: ");
-                    String pass = scan.nextLine();
-                    if (pass.equals(password2)) {
-                        user_id=2;
-                    }
-                    else{
-                        System.out.println("Invalid password!");
-                    }
-                }
-                else if (id == 3) {
-                    System.out.println("Please enter your password: ");
-                    String pass = scan.nextLine();
-                    if (pass.equals(password3)) {
-                        user_id=3;
-                    }
-                    else{
-                        System.out.println("Invalid password!");
-                    }
-                }
-                else if (id == 4) {
-                    System.out.println("Please enter your password: ");
-                    String pass = scan.nextLine();
-                    if (pass.equals(password4)) {
-                        user_id=4;
-                    }
-                    else{
-                        System.out.println("Invalid password!");
-                    }
-                }
-                else if (id == 5) {
-                    System.out.println("Please enter your password: ");
-                    String pass = scan.nextLine();
-                    if (pass.equals(password5)) {
-                        user_id=5;
-                    }
-                    else{
-                        System.out.println("Invalid password!");
-                    }
-                }
-                else if (id == 6) {
-                    System.out.println("Please enter your password: ");
-                    String pass = scan.nextLine();
-                    if (pass.equals(password6)) {
-                        user_id=6;
-                    }
-                    else{
-                        System.out.println("Invalid password!");
-                    }
-                }
-                else if (id == 7) {
-                    System.out.println("Please enter your password: ");
-                    String pass = scan.nextLine();
-                    if (pass.equals(password7)) {
-                        user_id=7;
-                    }
-                    else{
-                        System.out.println("Invalid password!");
-                    }
-                }
-                else if (id == 8) {
-                    System.out.println("Please enter your password: ");
-                    String pass = scan.nextLine();
-                    if (pass.equals(password8)) {
-                        user_id=8;
-                    }
-                    else{
-                        System.out.println("Invalid password!");
-                    }
-                }
-                else if (id == 9) {
-                    System.out.println("Please enter your password: ");
-                    String pass = scan.nextLine();
-                    if (pass.equals(password9)) {
-                        user_id=9;
-                    }
-                    else{
-                        System.out.println("Invalid password!");
-                    }
-                }
-                else if (id == 10) {
-                    System.out.println("Please enter your password: ");
-                    String pass = scan.nextLine();
-                    if (pass.equals(password10)) {
-                        user_id=10;
-                    }
-                    else{
-                        System.out.println("Invalid password!");
-                    }
-                }
-                else {
-                    System.out.println("Invalid user id!");
-                }
+            else{
+                System.out.println("Invalid password!");
+            }
+        }
+        else if (id == 2) {
+            System.out.println("Please enter your password: ");
+            String pass = scan.nextLine();
+            if (pass.equals(password2)) {
+                user_id=2;
+            }
+            else{
+                System.out.println("Invalid password!");
+            }
+        }
+        else if (id == 3) {
+            System.out.println("Please enter your password: ");
+            String pass = scan.nextLine();
+            if (pass.equals(password3)) {
+                user_id=3;
+            }
+            else{
+                System.out.println("Invalid password!");
+            }
+        }
+        else if (id == 4) {
+            System.out.println("Please enter your password: ");
+            String pass = scan.nextLine();
+            if (pass.equals(password4)) {
+                user_id=4;
+            }
+            else{
+                System.out.println("Invalid password!");
+            }
+        }
+        else if (id == 5) {
+            System.out.println("Please enter your password: ");
+            String pass = scan.nextLine();
+            if (pass.equals(password5)) {
+                user_id=5;
+            }
+            else{
+                System.out.println("Invalid password!");
+            }
+        }
+        else if (id == 6) {
+            System.out.println("Please enter your password: ");
+            String pass = scan.nextLine();
+            if (pass.equals(password6)) {
+                user_id=6;
+            }
+            else{
+                System.out.println("Invalid password!");
+            }
+        }
+        else if (id == 7) {
+            System.out.println("Please enter your password: ");
+            String pass = scan.nextLine();
+            if (pass.equals(password7)) {
+                user_id=7;
+            }
+            else{
+                System.out.println("Invalid password!");
+            }
+        }
+        else if (id == 8) {
+            System.out.println("Please enter your password: ");
+            String pass = scan.nextLine();
+            if (pass.equals(password8)) {
+                user_id=8;
+            }
+            else{
+                System.out.println("Invalid password!");
+            }
+        }
+        else if (id == 9) {
+            System.out.println("Please enter your password: ");
+            String pass = scan.nextLine();
+            if (pass.equals(password9)) {
+                user_id=9;
+            }
+            else{
+                System.out.println("Invalid password!");
+            }
+        }
+        else if (id == 10) {
+            System.out.println("Please enter your password: ");
+            String pass = scan.nextLine();
+            if (pass.equals(password10)) {
+                user_id=10;
+            }
+            else{
+                System.out.println("Invalid password!");
+            }
+        }
+        else {
+            System.out.println("Invalid user id!");
+        }
 
 
 
-                return user_id;
+        return user_id;
 
     }
 
