@@ -1,0 +1,45 @@
+package sample;
+
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import javax.swing.*;
+import javafx.event.ActionEvent;
+import java.io.IOException;
+
+public class doctoraccount {
+    public void changetodoctorclass(ActionEvent event) throws IOException {
+        Parent doctor = FXMLLoader.load(getClass().getResource("doctor.fxml"));
+        Scene doctor1 = new Scene(doctor);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        window.setScene((doctor1));
+        window.show();
+
+    }
+
+    public void changetopatientclass(ActionEvent event) throws IOException {
+        Parent patient = FXMLLoader.load(getClass().getResource("patient.fxml"));
+        Scene patient1 = new Scene(patient);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        window.setScene((patient1));
+        window.show();
+
+    }
+    public void changetoLogin(ActionEvent event) throws IOException {
+        Parent patient = FXMLLoader.load(getClass().getResource("Login.fxml"));
+        Scene patient1 = new Scene(patient);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        window.setScene((patient1));
+        window.show();
+
+    }
+
+
+
+}
