@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane layoutX="200.0" layoutY="106.0" prefHeight="200.0" prefWidth="200.0" />
+      <Label layoutX="200.0" layoutY="6.0" prefHeight="64.0" prefWidth="162.0" text="Patient Profile">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label alignment="TOP_LEFT" layoutX="18.0" layoutY="77.0" prefHeight="35.0" prefWidth="570.0" text="Hello Patient.">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="9.0" layoutY="113.0" prefHeight="46.0" prefWidth="544.0" text="You will be able to perform your hospital tasks easily in this system.">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="9.0" layoutY="159.0" prefHeight="46.0" prefWidth="589.0" text="The console will give you instructions  on how to use the system.">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="7.0" layoutY="209.0" prefHeight="46.0" prefWidth="544.0" text="Please follow them to do your hospital process correctly">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="13.0" layoutY="253.0" prefHeight="46.0" prefWidth="553.0" text="Please close the window when you are done.">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="18.0" layoutY="306.0" prefHeight="55.0" prefWidth="532.0" text="The program will start automatically when the window is closed.">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
