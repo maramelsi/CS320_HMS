@@ -99,11 +99,12 @@ public class Doctor {
         int doctor_id=login();
         System.out.println("Enter the patient ID: ");
         int patient_id = scan.nextInt();
+        scan.nextLine();
         System.out.println("Enter diagnosis: ");
-        String diagnosis = scan.next();
+        String diagnosis = scan.nextLine();
         System.out.println("Enter the prescription: ");
-        String medicine = scan.next();
-        String action = "insert into cs320.diagnosis ('diagnosis', 'medicine', 'patient_id', 'doctor_id') values (?,?,?,?)";
+        String medicine = scan.nextLine();
+        String action = "insert into cs320.diagnosis (diagnosis, medicine, patient_id, doctor_id) values (?,?,?,?)";
         PreparedStatement statement1 = myConn.prepareStatement(action);
         statement1.setString(1, diagnosis);
         statement1.setString(2, medicine);
@@ -113,15 +114,17 @@ public class Doctor {
     }
     //A functions that lets the doctors add a meal plan for their patients
     public static void add_meal_plan() throws SQLException{
+        int id=login();
         System.out.println("Enter the patient ID: ");
         int patient_id = scan.nextInt();
+        scan.nextLine();
         System.out.println("Enter breakfast plan: ");
-        String breakfast = scan.next();
+        String breakfast = scan.nextLine();
         System.out.println("Enter lunch plan: ");
-        String lunch = scan.next();
+        String lunch = scan.nextLine();
         System.out.println("Enter dinner plan: ");
-        String dinner = scan.next();
-        String action = "insert into cs320.meal_plan ('breakfast', 'lunch', 'dinner', 'patient_id') values (?,?,?,?)";
+        String dinner = scan.nextLine();
+        String action = "insert into cs320.meal_plan (breakfast, lunch, dinner, patient_id) values (?,?,?,?)";
         PreparedStatement statement1 = myConn.prepareStatement(action);
         statement1.setString(1, breakfast);
         statement1.setString(2, lunch);
@@ -131,11 +134,12 @@ public class Doctor {
     }
     //A function that lets the doctors add an exercise plan for their patients
     public static void add_exercise_plan() throws SQLException{
+        int id=login();
         System.out.println("Enter the patient ID: ");
         int patient_id = scan.nextInt();
         System.out.println("Enter exercise plan: ");
-        String plan = scan.next();
-        String action = "insert into cs320.exercise_plan ('plan', 'patient_id') values (?, ?)";
+        String plan = scan.nextLine();
+        String action = "insert into cs320.exercise_plan (plan, patient_id) values (?, ?)";
         PreparedStatement statement1 = myConn.prepareStatement(action);
         statement1.setString(1, plan);
         statement1.setInt(2, patient_id);
