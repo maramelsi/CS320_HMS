@@ -78,10 +78,10 @@ public class Doctor {
        int id = login();
 
        System.out.println("Enter your starting available date and time in the following format: yyyy-MM-dd hh:mm:ss.SSS");
-       String timestampAsString1 = scan.next();
+       String timestampAsString1 = scan.nextLine();
 
        System.out.println("Enter your ending available date and time in the following format: yyyy-MM-dd hh:mm:ss.SSS");
-       String timestampAsString2 = scan.next();
+       String timestampAsString2 = scan.nextLine();
 
        Timestamp timestamp1 = Timestamp.valueOf(timestampAsString1);
        Timestamp timestamp2 = Timestamp.valueOf(timestampAsString2);
@@ -137,6 +137,7 @@ public class Doctor {
         int id=login();
         System.out.println("Enter the patient ID: ");
         int patient_id = scan.nextInt();
+        scan.nextLine();
         System.out.println("Enter exercise plan: ");
         String plan = scan.nextLine();
         String action = "insert into cs320.exercise_plan (plan, patient_id) values (?, ?)";
