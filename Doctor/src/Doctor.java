@@ -149,6 +149,7 @@ public class Doctor {
     public static int login() {
         System.out.println("Please enter your doctor id: ");
         int id = scan.nextInt();
+        scan.nextLine();
         if (id == 1) {
             System.out.println("Please enter your password: ");
             String pass = scan.nextLine();
