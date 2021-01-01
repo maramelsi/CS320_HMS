@@ -11,26 +11,14 @@ import java.util.*;
 import java.lang.*;
 
 
-public class Main extends Application {
+public class Main {
+
     static Scanner scanner = new Scanner(System.in);
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("HMS");
-        primaryStage.setScene(new Scene(root, 800, 500));
-        primaryStage.show();
-
-    }
-
-    public static void exit() {
-        System.out.println("System closed");
-        System.exit(0);
-    }
 
     public static void main(String[] args) throws SQLException {
 
-        launch(args);
+
         Scanner reader = new Scanner(System.in);
         String scanned = "";
         while (true) {
@@ -47,6 +35,7 @@ public class Main extends Application {
     public static void ParseCommands(String scanned) throws SQLException {
         scanned = scanned.replace(","," ");
         String[] subCommand = scanned.split(" ");
+
         switch (subCommand[0].toLowerCase()){
             case "view":
                 //todo add checks for add argument count
@@ -84,12 +73,14 @@ public class Main extends Application {
                 break;
 
             case "display":
+
                 switch (subCommand[1].toLowerCase()){
                     case "profile":
                         Patient.display_profile();
+                    case "appointments":
+                        Patient.display_appointments();
                 }
                 break;
-
             default:
                 System.out.println("invalid command");
                 break;
@@ -99,7 +90,7 @@ public class Main extends Application {
     public static void showHelp() {
         System.out.println( "Welcome to Health Management System"  );
         System.out.println( "Commands For Doctor: VIEW DOCTOR_PROFILE | VIEW ALL_APPOINTMENTS | AVAILABLE TIMES | ADD DIAGNOSIS | ADD MEAL_PLAN | ADD EXERCISE_PLAN");
-        System.out.println( "Commands For Patients: MAKE APPOINTMENT | DISPLAY PROFILE | ");
+        System.out.println( "Commands For Patients: MAKE APPOINTMENT | DISPLAY PROFILE | DISPLAY APPOINTMENTS");
         System.out.println( "Command For Quit: Exit");
 
         System.out.println("Enter a Command:  ");
@@ -107,5 +98,8 @@ public class Main extends Application {
 
 
 }
+
+
+
 
 
